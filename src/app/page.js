@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Head from "next/head";
 import { motion } from "framer-motion";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
@@ -20,6 +20,31 @@ const wiggleAnimation = {
 };
 
 export default function Page() {
+
+  const [xDir, setXDir] = useState(1);
+  const [yDir, setYDir] = useState(1);
+  const [x, setX] = useState(0);
+  const [y, setY] = useState(0);
+
+  useEffect(() => {
+    const bounce = () => {
+      setX((prev) => {
+        const next = prev + 4 * xDir;
+        if (next > window.innerWidth - 100 || next < 0) setXDir(-xDir);
+        return next;
+      });
+
+      setY((prev) => {
+        const next = prev + 3 * yDir;
+        if (next > window.innerHeight - 100 || next < 0) setYDir(-yDir);
+        return next;
+      });
+    };
+
+    const interval = setInterval(bounce, 10);
+    return () => clearInterval(interval);
+  }, [xDir, yDir]);
+
   return (
     <motion.div
       variants={pageVariants}
@@ -42,7 +67,7 @@ export default function Page() {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6 }}
         >
-          <Image src={"/vercel.svg"} width={200} height={80} alt="SeedStark" />
+          <Image src={"/vercel.svg"} width={200} height={100} alt="SeedStark" />
         </motion.div>
 
         <nav className="flex flex-wrap gap-4 text-gray-300 justify-center text-sm md:text-base">
@@ -88,8 +113,19 @@ export default function Page() {
                 animate={{ scale: [1, 1.05, 1], opacity: [0.2, 0.4, 0.2] }}
                 transition={{ duration: 3, repeat: Infinity }}
               />
-              <motion.div className="absolute w-36 h-36 rounded-full border border-cyan-500 opacity-60 animate-ping" />
-              <Image src="/logo.png" width={100} height={100} alt="SeedStark Logo" className="relative z-10" />
+              {/* <motion.div className="absolute w-36 h-36 rounded-full border border-cyan-500 opacity-60 animate-ping" /> */}
+              <motion.div
+                animate={{ x, y }}
+                transition={{ duration: 0.01, ease: 'linear' }}
+                className="fixed top-0 left-0 z-50 w-20 h-20"
+              >
+                <Image
+                  src="/logo.png"
+                  alt="SeedStark Logo"
+                  fill
+                  className="object-contain rounded-xl shadow-2xl"
+                />
+              </motion.div>
             </motion.div>
 
             <motion.h2
