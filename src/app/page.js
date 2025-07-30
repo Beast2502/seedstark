@@ -94,24 +94,24 @@ export default function Page() {
           <motion.h3 className="text-3xl font-bold mb-4 text-teal-400" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }}>Work With Us</motion.h3>
           <p className="text-gray-400 mb-8 text-base max-w-md mx-auto">Let's build the future of AI together.</p>
           <motion.a 
-            href="mailto:hello@seedstark.com" 
+            href="mailto:mehulsaxena45@gmail.com" 
             className="inline-block px-6 py-3 bg-teal-500 hover:bg-teal-600 rounded-xl text-white font-semibold shadow-md"
             whileHover={{ scale: 1.1 }}>
-            hello@seedstark.com
+            mehulsaxena45@gmail.com
           </motion.a>
         </section>
       </main>
 
       <footer className="border-t border-gray-800 text-center text-gray-500 text-sm py-6 px-4">
         <div className="flex justify-center gap-6 mb-4 flex-wrap">
-          <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" className="hover:text-white">
+          <a href="https://github.com/Beast2502" target="_blank" rel="noopener noreferrer" className="hover:text-white">
             <FaGithub size={24} />
           </a>
-          <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer" className="hover:text-white">
+          <a href="https://www.linkedin.com/in/mehul-saxena-826a1812b/" target="_blank" rel="noopener noreferrer" className="hover:text-white">
             <FaLinkedin size={24} />
           </a>
         </div>
-        <p className="text-xs sm:text-sm">© {new Date().getFullYear()} SeedStark. All rights reserved.</p>
+        <p className="text-xs sm:text-sm">© 2025s SeedStark. All rights reserved.</p>
       </footer>
     </div>
   );
