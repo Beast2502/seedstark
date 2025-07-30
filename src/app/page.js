@@ -111,7 +111,7 @@ export default function Page() {
             <FaLinkedin size={24} />
           </a>
         </div>
-        <p className="text-xs sm:text-sm">© 2025s SeedStark. All rights reserved.</p>
+        <p className="text-xs sm:text-sm">©2025 SeedStark. All rights reserved.</p>
       </footer>
     </div>
   );
