@@ -113,19 +113,14 @@ export default function Page() {
                 animate={{ scale: [1, 1.05, 1], opacity: [0.2, 0.4, 0.2] }}
                 transition={{ duration: 3, repeat: Infinity }}
               />
-              {/* <motion.div className="absolute w-36 h-36 rounded-full border border-cyan-500 opacity-60 animate-ping" /> */}
-              <motion.div
+              {/* <motion.div
                 animate={{ x, y }}
                 transition={{ duration: 0.01, ease: 'linear' }}
                 className="fixed top-0 left-0 z-50 w-20 h-20"
               >
-                <Image
-                  src="/logo.png"
-                  alt="SeedStark Logo"
-                  fill
-                  className="object-contain rounded-xl shadow-2xl"
-                />
-              </motion.div>
+                <motion.div className="absolute w-36 h-36 rounded-full border border-cyan-500 opacity-60 animate-ping" />
+
+              </motion.div> */}
             </motion.div>
 
             <motion.h2
@@ -134,6 +129,11 @@ export default function Page() {
               animate={{ scale: 1 }}
               transition={{ duration: 0.8 }}
             >
+               <motion.div
+              className="absolute w-60 h-60 rounded-full border-2 border-purple-600 blur-md opacity-50 animate-spin-slow"
+              style={{ zIndex: 0 }}
+            />
+
               AI-Driven MVPs for Startups
             </motion.h2>
           </div>
@@ -155,6 +155,7 @@ export default function Page() {
         </motion.section>
 
         <motion.section id="services" className="py-20" variants={pageVariants}>
+          
           <h3
             className="text-center mb-5 text-2xl md:text-5xl font-black tracking-tight z-10 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-cyan-500"
           >
@@ -164,9 +165,8 @@ export default function Page() {
             {["Generative AI Tools", "Smart Dashboards", "Autonomous MVP Builders"].map((title, i) => (
               <motion.div
                 key={title}
-                className="bg-[#1c1c1c] p-6 rounded-2xl shadow-lg border border-teal-900"
-                whileHover={{ scale: 1.05 }}
-                variants={wiggleAnimation}
+                className="bg-[#1c1c1c] p-6 rounded-2xl border border-teal-800"
+                whileHover={{ scale: 1.03 }}
               >
                 <h4 className="text-xl font-semibold text-white mb-2">{title}</h4>
                 <p className="text-gray-400">
@@ -183,7 +183,34 @@ export default function Page() {
           <h3
             className="mb-5 text-center text-2xl md:text-5xl font-black tracking-tight z-10 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-cyan-500"
 
-          >AI Projects</h3>
+          >
+               <motion.div
+              className="absolute w-60 h-60 rounded-full border-2 border-purple-600 blur-md opacity-50 animate-spin-slow"
+              style={{ zIndex: 0 }}
+            />
+
+            <motion.div
+              initial={{ scale: 0.9, rotate: 0 }}
+              animate={{ rotate: [0, 360], scale: [1, 1.1, 1] }}
+              transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+              className="relative flex justify-center items-center z-10"
+            >
+              <motion.div
+                className="absolute w-35 h-44 bg-gradient-to-tr from-cyan-400 via-fuchsia-500 to-yellow-400 blur-2xl opacity-30 rounded-full"
+                animate={{ scale: [1, 1.05, 1], opacity: [0.2, 0.4, 0.2] }}
+                transition={{ duration: 3, repeat: Infinity }}
+              />
+              {/* <motion.div
+                animate={{ x, y }}
+                transition={{ duration: 0.01, ease: 'linear' }}
+                className="fixed top-0 left-0 z-50 w-20 h-20"
+              >
+                <motion.div className="absolute w-36 h-36 rounded-full border border-cyan-500 opacity-60 animate-ping" />
+
+              </motion.div> */}
+            </motion.div>
+
+            AI Projects</h3>
           <div className="grid md:grid-cols-2 gap-10">
             {[
               {
@@ -205,6 +232,7 @@ export default function Page() {
               </motion.div>
             ))}
           </div>
+          
         </motion.section>
 
         <motion.section id="contact" className="py-20 text-center" variants={pageVariants}>
@@ -223,6 +251,7 @@ export default function Page() {
           >
             mehulsaxena45@gmail.com
           </motion.a>
+          
         </motion.section>
       </main>
 
