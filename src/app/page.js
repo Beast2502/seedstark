@@ -7,50 +7,20 @@ import { FaGithub, FaLinkedin } from "react-icons/fa";
 import Image from "next/image";
 
 const pageVariants = {
-  initial: { opacity: 0, y: 40 },
+  initial: { opacity: 0, y: 0 },
   animate: { opacity: 1, y: 0, transition: { duration: 0.7 } },
 };
 
-const wiggleAnimation = {
-  initial: { rotate: -2 },
-  animate: {
-    rotate: [0, -2, 2, -2, 2, 0],
-    transition: { duration: 2, repeat: Infinity },
-  },
-};
 
 export default function Page() {
 
-  const [xDir, setXDir] = useState(1);
-  const [yDir, setYDir] = useState(1);
-  const [x, setX] = useState(0);
-  const [y, setY] = useState(0);
-
-  useEffect(() => {
-    const bounce = () => {
-      setX((prev) => {
-        const next = prev + 4 * xDir;
-        if (next > window.innerWidth - 100 || next < 0) setXDir(-xDir);
-        return next;
-      });
-
-      setY((prev) => {
-        const next = prev + 3 * yDir;
-        if (next > window.innerHeight - 100 || next < 0) setYDir(-yDir);
-        return next;
-      });
-    };
-
-    const interval = setInterval(bounce, 10);
-    return () => clearInterval(interval);
-  }, [xDir, yDir]);
 
   return (
-    <motion.div
+     <motion.div
       variants={pageVariants}
       initial="initial"
       animate="animate"
-      className="bg-gradient-to-br from-[#0a0a0a] via-[#101010] to-[#0f1c1f] min-h-screen text-white font-sans overflow-x-hidden"
+      className="bg-gradient-to-br from-[#0a0a0a] via-[#101010] to-[#0f1c1f] min-h-screen text-white font-sans"
     >
       <Head>
         <title>SeedStark | AI-Powered Startup Studio</title>
@@ -61,29 +31,32 @@ export default function Page() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
+      {/* Header Section */}
       <header className="flex flex-col md:flex-row items-center justify-between px-6 py-6 border-b border-[#1e3a3a] gap-4 md:gap-0">
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6 }}
         >
-          <Image src={"/vercel.svg"} width={200} height={100} alt="SeedStark" />
+          <Image
+            src="/vercel.svg"
+            width={200}
+            height={100}
+            alt="SeedStark"
+            className="object-contain"
+          />
         </motion.div>
 
         <nav className="flex flex-wrap gap-4 text-gray-300 justify-center text-sm md:text-base">
-          {[
-            { name: "Services", href: "#services" },
-            { name: "Projects", href: "#projects" },
-            { name: "Contact", href: "#contact" },
-          ].map((link, idx) => (
+          {["Services", "Projects", "Contact"].map((section) => (
             <motion.a
-              key={idx}
-              href={link.href}
+              key={section}
+              href={`#${section.toLowerCase()}`}
               className="hover:text-teal-300 transition-colors duration-200"
               whileHover={{ scale: 1.1 }}
               transition={{ type: "spring", stiffness: 300 }}
             >
-              {link.name}
+              {section}
             </motion.a>
           ))}
         </nav>
@@ -102,26 +75,7 @@ export default function Page() {
               style={{ zIndex: 0 }}
             />
 
-            <motion.div
-              initial={{ scale: 0.9, rotate: 0 }}
-              animate={{ rotate: [0, 360], scale: [1, 1.1, 1] }}
-              transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
-              className="relative flex justify-center items-center z-10"
-            >
-              <motion.div
-                className="absolute w-44 h-44 bg-gradient-to-tr from-cyan-400 via-fuchsia-500 to-yellow-400 blur-2xl opacity-30 rounded-full"
-                animate={{ scale: [1, 1.05, 1], opacity: [0.2, 0.4, 0.2] }}
-                transition={{ duration: 3, repeat: Infinity }}
-              />
-              {/* <motion.div
-                animate={{ x, y }}
-                transition={{ duration: 0.01, ease: 'linear' }}
-                className="fixed top-0 left-0 z-50 w-20 h-20"
-              >
-                <motion.div className="absolute w-36 h-36 rounded-full border border-cyan-500 opacity-60 animate-ping" />
-
-              </motion.div> */}
-            </motion.div>
+           
 
             <motion.h2
               className="text-3xl md:text-5xl font-black tracking-tight z-10 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-cyan-500"
@@ -129,10 +83,10 @@ export default function Page() {
               animate={{ scale: 1 }}
               transition={{ duration: 0.8 }}
             >
-               <motion.div
-              className="absolute w-60 h-60 rounded-full border-2 border-purple-600 blur-md opacity-50 animate-spin-slow"
-              style={{ zIndex: 0 }}
-            />
+              <motion.div
+                className="absolute w-60 h-60 rounded-full border-2 border-purple-600 blur-md opacity-50 animate-spin-slow"
+                style={{ zIndex: 0 }}
+              />
 
               AI-Driven MVPs for Startups
             </motion.h2>
@@ -155,7 +109,7 @@ export default function Page() {
         </motion.section>
 
         <motion.section id="services" className="py-20" variants={pageVariants}>
-          
+
           <h3
             className="text-center mb-5 text-2xl md:text-5xl font-black tracking-tight z-10 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-cyan-500"
           >
@@ -184,7 +138,7 @@ export default function Page() {
             className="mb-5 text-center text-2xl md:text-5xl font-black tracking-tight z-10 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-cyan-500"
 
           >
-               <motion.div
+            <motion.div
               className="absolute w-60 h-60 rounded-full border-2 border-purple-600 blur-md opacity-50 animate-spin-slow"
               style={{ zIndex: 0 }}
             />
@@ -232,7 +186,7 @@ export default function Page() {
               </motion.div>
             ))}
           </div>
-          
+
         </motion.section>
 
         <motion.section id="contact" className="py-20 text-center" variants={pageVariants}>
@@ -251,7 +205,7 @@ export default function Page() {
           >
             mehulsaxena45@gmail.com
           </motion.a>
-          
+
         </motion.section>
       </main>
 
